@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Load metoda</title>
+        <meta charset="utf-8"/>
+        <script src="jquery-3.4.1.min.js"></script> 
+	</head>
+	<body>
+        <div>
+            Sadrzaj na inicijalnoj stranici.
+        </div>
+        <div id="prikaz"></div>
+        <script>
+            $(document).ready(function(){
+                $("#prikaz").load("Test.html");
+                //$("#prikaz").load("Test.html #div1");
+            });
+        </script>
+	</body>
+</html>

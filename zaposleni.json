@@ -1,0 +1,50 @@
+{
+  "zaposleni": [
+    {
+      "id": 1,
+      "ime": "Petar",
+      "prezime": "Petrovic",
+      "email": "ppetrovic@gmail.com"
+    },
+    {
+      "id": 2,
+      "ime": "Marko",
+      "prezime": "Markovic",
+      "email": "mmarkovic@gmail.com"
+    },
+    {
+      "id": 3,
+      "ime": "Janko",
+      "prezime": "Jankovic",
+      "email": "jjankovic@gmail.com"
+    },
+    {
+      "ime": "Vida",
+      "prezime": "Ruzicic",
+      "email": "vida.ruzicic@gmail.com",
+      "id": 4
+    },
+    {
+      "ime": "Nikola",
+      "prezime": "Nikolic",
+      "email": "nikolic@gmail.com",
+      "id": 5
+    },
+    {
+      "ime": "Nikola",
+      "prezime": "Nikolic",
+      "email": "nikolic@gmail.com",
+      "id": 6
+    }
+  ],
+  "destinations": [
+	{
+		"id": 1,
+		"destination": "Venice",
+		"startTime": "29.11.2019.",
+		"duration": 5,
+		"price": 550	
+	}
+  
+  ]
+}

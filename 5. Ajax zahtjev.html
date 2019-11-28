@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AJAX metoda</title>
+        <meta charset="utf-8"/>
+        <script src="jquery-3.4.1.min.js"></script> 
+	</head>
+	<body>
+        <form>
+            <input id="btn1" type="button" value="AJAX zahtjev" onclick="ajaxZahtjev()"/>
+            <br/>            
+        </form>
+        <br/>
+        <div id="prikaz"></div>
+        <script>           
+            function ajaxZahtjev(){
+                var dataToSend  = {ime:"Nikola", prezime:"Nikolic", email:"nikolic@gmail.com"};
+                var zahtjev = $.ajax({
+                    type: "POST",
+                    url: "http://localhost:3000/zaposleni",
+                    data: dataToSend
+                });                           
+                zahtjev.done(function(podaci){
+                    $("#prikaz").text(JSON.stringify(podaci));
+                });
+                zahtjev.fail(function(greska){
+                    $("#prikaz").text(greska.status + ":" + greska.statusText);
+                });
+            }       
+        </script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Get metoda</title>
+        <meta charset="utf-8"/>
+        <script src="jquery-3.4.1.min.js"></script> 
+	</head>
+	<body>
+        <form>
+            <input id="btn1" type="button" value="GET zahtjev" onclick="getZahtjev()"/>
+            <br/>            
+        </form>
+        <br/>
+        <div id="prikaz"></div>
+        <script>
+           
+                function getZahtjev(){
+                    var zahtjev = $.get("http://localhost:3000/zaposleni");
+                    zahtjev.done(function(podaci){
+                        $("#prikaz").text(JSON.stringify(podaci));
+                    });
+                    zahtjev.fail(function(greska){
+                        $("#prikaz").text(greska.status + ":" + greska.statusText);
+                    });
+                }     
+        
+        </script>
+	</body>
+</html>

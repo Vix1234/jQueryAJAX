@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JQuery validacija</title>
+        <meta charset="utf-8"/>
+        <script src="jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            #forma1{
+                background-color:aquamarine;
+                width: 500px;
+                padding: 20px;
+            }
+
+            #forma1 label {
+                width: 250px;
+            }
+
+            #forma1 label.error, 
+            #forma1 input.submit{
+                color: red;
+            }
+        </style>
+    </head>
+	<body>
+        <form id="forma1" method="GET" action="">
+            <fieldset>
+                <legend>Unesite podatke</legend>
+                <p>
+                    <label for="TextIme">Ime (obavezno polje, min 5 karaktera)</label>
+                    <input id="TextIme" name="ime" type="text"/>
+                </p>
+                <hr>
+                <p>
+                    <label for="TextEmail">E-mail (obavezno polje)</label>
+                    <input id="TextEmail" name="email" type="email"/>
+                </p>
+                <hr>
+                <p>
+                    <label for="TextURL">URL (opciono)</label>
+                    <input id="TextURL" name="url" type="url"/>
+                </p>
+                <hr>
+                <p>
+                    <label for="TextArea1">Unesite komentar</label>
+                    <textarea name="komentar" id="TextArea1" cols="30" rows="3"></textarea>
+                </p>
+                <hr>
+                <p>
+                    <input id="SubmitBtn" type="submit" class="btn btn-secondary" value="Posalji"/>
+                </p> 
+            </fieldset>                     
+        </form>
+        <script src="dist\jquery.validate.min.js"></script>
+        <script>           
+            $(document).ready(function(){
+                $("#forma1").validate({
+                    rules:{
+                        ime: {
+                            required: true,
+                            minlength: 5
+                        },
+                        email: "required",
+                        komentar: {
+                            required: true,
+                            minlength: 10
+                        }
+                    },
+                    messages: {
+                        ime: {
+                            required: "Unesite vase ime",
+                            minlength: "Ime mora da ima bar 5 karaktera"
+                        },
+                        email: "Unesite validan email",
+                        url: "Unesite validan URL",
+                        komentar: {
+                            required: "Unesite komentar",
+                            minlength: "Mora imati minimum 10 karaktera"
+                        }
+                    }
+                });
+            });
+        </script>
+	</body>
+</html>

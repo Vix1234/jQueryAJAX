@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Post metoda</title>
+        <meta charset="utf-8"/>
+        <script src="jquery-3.4.1.min.js"></script> 
+	</head>
+	<body>
+        <form>
+            <input id="btn1" type="button" value="POST zahtjev" onclick="postZahtjev()"/>
+            <br/>            
+        </form>
+        <br/>
+        <div id="prikaz"></div>
+        <script>           
+            function postZahtjev(){
+                var zahtjev = $.post("http://localhost:3000/zaposleni",
+                {ime:"Nikola", prezime:"Nikolic", email:"nikolic@gmail.com"});
+                zahtjev.done(function(podaci){
+                    $("#prikaz").text(JSON.stringify(podaci));
+                });
+                zahtjev.fail(function(greska){
+                    $("#prikaz").text(greska.status + ":" + greska.statusText);
+                });
+            }       
+        </script>
+	</body>
+</html>

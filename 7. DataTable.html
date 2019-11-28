@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JQuery validacija</title>
+        <meta charset="utf-8"/>       
+    </head>
+	<body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table id="table" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Ime</th>
+                                <th>Prezime</th>
+                                <th>Email</th>                                
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="dist\jquery.validate.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script>           
+            $(document).ready(function(){
+                var get = $.ajax({
+                        type: "GET",
+                        url: "http://localhost:3000/zaposleni"
+                        });
+                get.done(function (podaci) {
+                    $.each(podaci, function (i, podatak) {
+                        $("tbody").append('<tr><td>' + podatak.ime + '</td><td>' + podatak.prezime + '</td><td>' + podatak.email);
+                    });
+                    $("#table").dataTable();
+                });
+                get.fail(function (podaci) {
+                    alert(podaci.statusText);
+                });                
+            });
+        </script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vanilla JS Get request</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+        <h1>Ucitavanje podataka sa sajta</h1>
+        <button onclick="ucitaj()">Ucitaj</button>
+        <p id="fajl"></p>
+        <script>
+            var osoba={"ime":"Vida", "prezime":"Ruzicic", "email":"vida.ruzicic@gmail.com"};
+            function ucitaj(){
+                var zahtjev = new XMLHttpRequest();
+                zahtjev.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        //Odgovor sa servera tretira se kao tekst
+                        document.getElementById("fajl").innerHTML = this.responseText;
+                    }                 
+                };
+                zahtjev.open("POST", "http://localhost:3000/zaposleni", true);
+                zahtjev.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                zahtjev.send(JSON.stringify(osoba));
+            }
+        </script>
+	</body>
+</html>
