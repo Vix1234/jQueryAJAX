@@ -29,22 +29,15 @@
       "prezime": "Nikolic",
       "email": "nikolic@gmail.com",
       "id": 5
-    },
-    {
-      "ime": "Nikola",
-      "prezime": "Nikolic",
-      "email": "nikolic@gmail.com",
-      "id": 6
     }
   ],
   "destinations": [
-	{
-		"id": 1,
-		"destination": "Venice",
-		"startTime": "29.11.2019.",
-		"duration": 5,
-		"price": 550	
-	}
-  
+    {
+      "id": 1,
+      "destination": "Venice",
+      "startTime": "29.11.2019.",
+      "duration": 5,
+      "price": 550
+    }
   ]
 }

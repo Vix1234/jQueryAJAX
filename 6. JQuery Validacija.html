@@ -3,7 +3,6 @@
 	<head>
 		<title>JQuery validacija</title>
         <meta charset="utf-8"/>
-        <script src="jquery-3.4.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
             #forma1{
@@ -27,8 +26,12 @@
             <fieldset>
                 <legend>Unesite podatke</legend>
                 <p>
-                    <label for="TextIme">Ime (obavezno polje, min 5 karaktera)</label>
+                    <label for="TextIme">Ime (obavezno polje, min 3 karaktera)</label>
                     <input id="TextIme" name="ime" type="text"/>
+                </p>
+                <p>
+                    <label for="TextPrezime">Prezime (obavezno polje, min 3 karaktera)</label>
+                    <input id="TextPrezime" name="prezime" type="text"/>
                 </p>
                 <hr>
                 <p>
@@ -37,7 +40,7 @@
                 </p>
                 <hr>
                 <p>
-                    <label for="TextURL">URL (opciono)</label>
+                    <label for="TextURL">URL</label>
                     <input id="TextURL" name="url" type="url"/>
                 </p>
                 <hr>
@@ -47,39 +50,60 @@
                 </p>
                 <hr>
                 <p>
-                    <input id="SubmitBtn" type="submit" class="btn btn-secondary" value="Posalji"/>
+                    <input id="SubmitBtn" class="btn btn-secondary" type="submit" value="Posalji"/>
                 </p> 
             </fieldset>                     
         </form>
-        <script src="dist\jquery.validate.min.js"></script>
-        <script>           
-            $(document).ready(function(){
-                $("#forma1").validate({
-                    rules:{
-                        ime: {
-                            required: true,
-                            minlength: 5
-                        },
-                        email: "required",
-                        komentar: {
-                            required: true,
-                            minlength: 10
-                        }
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="jquery-validation-1.19.2/jquery-validation-1.19.2/dist/jquery.validate.min.js"></script>
+        <script>
+             $("#forma1").validate({
+                rules:{
+                    ime: {
+                        required: true,
+                        minlength: 3
                     },
-                    messages: {
-                        ime: {
-                            required: "Unesite vase ime",
-                            minlength: "Ime mora da ima bar 5 karaktera"
-                        },
-                        email: "Unesite validan email",
-                        url: "Unesite validan URL",
-                        komentar: {
-                            required: "Unesite komentar",
-                            minlength: "Mora imati minimum 10 karaktera"
-                        }
+                    prezime:{
+                        required: true,
+                        minlength: 3,
+                    },
+                    email: "required",
+                    komentar: {
+                        required: true,
+                        minlength: 10
                     }
-                });
-            });
+                },
+                messages: {
+                    ime: {
+                        required: "Unesite vase ime",
+                        minlength: "Ime mora da ima bar 3 karaktera"
+                    },
+                    email: "Unesite validan email",
+                    url: "Opcioni unos.",
+                    komentar: {
+                        required: "Unesite komentar",
+                        minlength: "Mora imati minimum 10 karaktera"
+                    }
+                },
+                submitHandler: function () {
+                    var unesenoIme = $("#TextIme").val();                    
+                    var unesenoPrezime = $("#TextIme").val();
+                    var uneseniMail = $("#TextEmail").val();
+                    var unos = {ime: unesenoIme, prezime: unesenoPrezime, email: uneseniMail};
+
+                    var zahtjev = $.ajax({
+                        type: "POST",
+                        url: "http://localhost:3000/zaposleni",
+                        data: unos
+                    });
+                    zahtjev.done(function(podaci){
+                        alert("Podaci uspjesno poslati na server");
+                    });
+                    zahtjev.fail(function(greska){
+                        console.log(greska.status + ":" + greska.statusText);
+                    });
+                }
+            });               
         </script>
 	</body>
 </html>

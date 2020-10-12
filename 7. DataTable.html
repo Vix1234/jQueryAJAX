@@ -2,29 +2,11 @@
 <html>
 	<head>
 		<title>JQuery validacija</title>
-        <meta charset="utf-8"/>       
-    </head>
-	<body>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <table id="table" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Ime</th>
-                                <th>Prezime</th>
-                                <th>Email</th>                                
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <script src="jquery-3.4.1.min.js"></script>
-        <script src="dist\jquery.validate.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <meta charset="utf-8"/>
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="jquery-validation-1.19.2/jquery-validation-1.19.2/dist/jquery.validate.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/> 
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script>           
             $(document).ready(function(){
@@ -42,6 +24,25 @@
                     alert(podaci.statusText);
                 });                
             });
-        </script>
+        </script>       
+    </head>
+	<body style="margin-top: 1%;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <table id="table" class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="cell-border">Ime</th>
+                                <th>Prezime</th>
+                                <th>Email</th>                                
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
 	</body>
 </html>
